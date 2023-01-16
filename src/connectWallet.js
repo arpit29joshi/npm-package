@@ -75,6 +75,10 @@ const connectWallet = async (chainToConnect) => {
 
     if (chainId !== chainIdHex) {
       console.log(`You are not connected to ${chainToConnect} \n`);
+      await ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: (chainIdHex) }],
+      });
       return;
     }
 
